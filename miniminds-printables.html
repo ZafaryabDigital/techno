@@ -1,0 +1,487 @@
+<!-- ============================================================
+     MiniMinds Printables — Landing Page
+     Paste this whole block into an Elementor "HTML" widget.
+     All styles are scoped under .mm-* so it won't break your theme.
+     ============================================================ -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  .mm-root{
+    --mm-bg:#fbf6ea;
+    --mm-ink:#1e1f3f;
+    --mm-ink-soft:rgba(30,31,63,.8);
+    --mm-muted:#6c6b85;
+    --mm-card:#ffffff;
+    --mm-border:#ece1cb;
+    --mm-coral:#f4715a;
+    --mm-coral-deep:#d04a30;
+    --mm-mint:#7ed7b6;
+    --mm-mustard:#f0c155;
+    --mm-sky:#80c1e4;
+    --mm-cream:#fbf6ea;
+    --mm-shadow-card:0 1px 0 rgba(30,31,63,.05),0 12px 30px -16px rgba(30,31,63,.25);
+    --mm-shadow-pop:0 20px 50px -12px rgba(208,74,48,.45);
+    --mm-grad-cta:linear-gradient(135deg,#f4715a,#e85a45);
+    --mm-grad-hero:
+      radial-gradient(circle at 20% 0%, rgba(240,193,85,.55), transparent 55%),
+      radial-gradient(circle at 90% 30%, rgba(244,113,90,.45), transparent 55%),
+      radial-gradient(circle at 50% 100%, rgba(126,215,182,.4), transparent 60%),
+      #fbf6ea;
+    font-family:'Plus Jakarta Sans',ui-sans-serif,system-ui,sans-serif;
+    color:var(--mm-ink);
+    background:var(--mm-bg);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mm-root *{box-sizing:border-box}
+  .mm-root h1,.mm-root h2,.mm-root h3,.mm-root h4{
+    font-family:'Fraunces',ui-serif,Georgia,serif;
+    letter-spacing:-.02em;color:var(--mm-ink);margin:0;
+  }
+  .mm-root p{margin:0}
+  .mm-root ul{margin:0;padding:0;list-style:none}
+  .mm-root a{text-decoration:none;color:inherit}
+  .mm-wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+  .mm-wrap-sm{max-width:820px;margin:0 auto;padding:0 16px}
+
+  /* Announcement bar */
+  .mm-anno{background:var(--mm-ink);color:var(--mm-cream);text-align:center;padding:10px 16px;font-size:13px;font-weight:500}
+  .mm-anno b{color:var(--mm-mustard)}
+  .mm-anno .strike{text-decoration:line-through;opacity:.6}
+
+  /* Hero */
+  .mm-hero{background:var(--mm-grad-hero);padding:56px 16px 90px;overflow:hidden;position:relative}
+  .mm-hero-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center;max-width:1120px;margin:0 auto}
+  @media(min-width:860px){.mm-hero-grid{grid-template-columns:1fr 1fr}}
+  .mm-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;padding:6px 14px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mm-coral-deep);box-shadow:0 2px 8px rgba(0,0,0,.05)}
+  .mm-h1{font-size:clamp(34px,5.5vw,60px);font-weight:900;line-height:1.05;margin-top:18px}
+  .mm-h1 .hl{position:relative;display:inline-block}
+  .mm-h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:12px;background:rgba(240,193,85,.7);z-index:-1}
+  .mm-lede{font-size:clamp(18px,2.2vw,24px);font-weight:600;color:var(--mm-ink-soft);margin-top:18px}
+  .mm-sub{font-size:16px;color:var(--mm-muted);margin-top:14px;max-width:560px}
+
+  .mm-checks{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;margin-top:22px;max-width:520px}
+  .mm-checks li{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--mm-ink)}
+  .mm-checks .dot{display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--mm-mint);position:relative;flex:0 0 16px}
+  .mm-checks .dot::after{content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+
+  /* Price box */
+  .mm-pricebox{display:inline-flex;align-items:center;gap:14px;border:2px dashed var(--mm-coral);background:#fff;padding:14px 18px;border-radius:18px;box-shadow:0 4px 12px rgba(0,0,0,.05);margin-top:28px;flex-wrap:wrap}
+  .mm-pricebox .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--mm-muted);font-weight:700}
+  .mm-pricebox .old{font-size:20px;font-weight:700;color:var(--mm-muted);text-decoration:line-through}
+  .mm-pricebox .nowlbl{color:var(--mm-coral-deep)}
+  .mm-pricebox .now{font-size:30px;font-weight:900;color:var(--mm-coral-deep)}
+  .mm-pricebox .sep{width:1px;height:46px;background:var(--mm-border)}
+
+  /* CTA button */
+  .mm-cta-wrap{margin-top:28px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+  .mm-cta-wrap.center{align-items:center}
+  .mm-btn{display:inline-flex;align-items:center;gap:12px;background:var(--mm-grad-cta);color:#fff;padding:18px 36px;border-radius:999px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:17px;box-shadow:var(--mm-shadow-pop);transition:transform .2s}
+  .mm-btn:hover{transform:scale(1.03)}
+  .mm-btn .arr{transition:transform .2s}
+  .mm-btn:hover .arr{transform:translateX(4px)}
+  .mm-cta-sub{font-size:12px;color:var(--mm-muted);font-weight:600;display:inline-flex;align-items:center;gap:6px}
+  .mm-cta-sub::before{content:"✓";color:#3aaf85;font-weight:900}
+
+  /* Hero image */
+  .mm-hero-img{position:relative}
+  .mm-hero-img .bg1,.mm-hero-img .bg2{position:absolute;border-radius:36px}
+  .mm-hero-img .bg1{inset:-24px;background:rgba(240,193,85,.3);transform:rotate(-2deg)}
+  .mm-hero-img .bg2{inset:-12px;background:rgba(244,113,90,.2);transform:rotate(1deg);border-radius:32px}
+  .mm-hero-img img{position:relative;width:100%;border-radius:24px;box-shadow:0 25px 60px -15px rgba(0,0,0,.35);display:block}
+  .mm-badge-off{position:absolute;top:-16px;right:-16px;background:var(--mm-coral);color:#fff;padding:12px 16px;border-radius:999px;font-weight:900;font-size:14px;transform:rotate(6deg);box-shadow:0 10px 25px rgba(0,0,0,.2)}
+  .mm-badge-loved{position:absolute;bottom:-20px;left:-20px;background:#fff;border:1px solid var(--mm-border);border-radius:18px;padding:10px 14px;box-shadow:0 12px 30px rgba(0,0,0,.15);display:flex;gap:10px;align-items:center}
+  .mm-avatars{display:flex}
+  .mm-avatars span{width:30px;height:30px;border-radius:50%;background:var(--mm-cream);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:15px;margin-left:-6px}
+  .mm-avatars span:first-child{margin-left:0}
+  .mm-stars{color:var(--mm-mustard);font-size:12px;letter-spacing:1px}
+  .mm-loved-txt{font-size:11px;font-weight:700;color:var(--mm-ink)}
+
+  /* Trust bar */
+  .mm-trust{border-top:1px solid var(--mm-border);border-bottom:1px solid var(--mm-border);background:rgba(255,255,255,.5)}
+  .mm-trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:20px 16px;text-align:center;max-width:1120px;margin:0 auto}
+  @media(min-width:640px){.mm-trust-grid{grid-template-columns:repeat(4,1fr)}}
+  .mm-trust-grid .ic{font-size:16px}
+  .mm-trust-grid .lbl{font-size:13px;font-weight:700;color:var(--mm-ink);margin-top:4px}
+
+  /* Section utility */
+  .mm-section{padding:80px 16px}
+  .mm-sec-alt{background:rgba(240,193,85,.12)}
+  .mm-eyebrow{display:inline-block;background:rgba(126,215,182,.3);padding:6px 16px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--mm-ink);margin-bottom:14px}
+  .mm-h2{font-size:clamp(28px,4.5vw,48px);font-weight:900;line-height:1.1;text-align:center}
+  .mm-h2 .coral{color:var(--mm-coral)}
+  .mm-h2 .mustard{color:var(--mm-mustard)}
+  .mm-center{text-align:center}
+  .mm-section-intro{margin-top:18px;text-align:center;font-size:18px;color:var(--mm-muted);max-width:640px;margin-left:auto;margin-right:auto}
+
+  /* Problem */
+  .mm-pain-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:40px}
+  @media(min-width:640px){.mm-pain-grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:900px){.mm-pain-grid{grid-template-columns:repeat(3,1fr)}}
+  .mm-pain{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--mm-border);border-radius:18px;padding:18px;box-shadow:0 1px 3px rgba(0,0,0,.04);font-weight:600}
+  .mm-pain .x{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--mm-coral);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;margin-top:2px}
+  .mm-pain-banner{margin-top:48px;background:var(--mm-ink);color:var(--mm-cream);border-radius:24px;padding:36px;text-align:center;font-size:18px}
+  .mm-pain-banner b{color:var(--mm-mustard);font-weight:900}
+  .mm-pain-banner em{font-style:italic;text-decoration:underline;text-decoration-color:var(--mm-coral);text-decoration-thickness:2px;text-underline-offset:4px}
+
+  /* Solution */
+  .mm-skills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:30px}
+  .mm-skill{background:#fff;border:1px solid var(--mm-border);padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:var(--mm-ink);box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .mm-perfect-lbl{margin-top:48px;text-align:center;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.15em;color:var(--mm-muted)}
+  .mm-perfect-grid{margin-top:20px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(min-width:640px){.mm-perfect-grid{grid-template-columns:repeat(5,1fr)}}
+  .mm-perfect{background:#fff;border:1px solid var(--mm-border);border-radius:18px;padding:18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .mm-perfect .ic{font-size:28px}
+  .mm-perfect .lbl{margin-top:6px;font-size:13px;font-weight:800;color:var(--mm-ink)}
+
+  /* Included */
+  .mm-incl-grid{margin-top:48px;display:grid;grid-template-columns:1fr;gap:22px}
+  @media(min-width:640px){.mm-incl-grid{grid-template-columns:1fr 1fr}}
+  @media(min-width:1000px){.mm-incl-grid{grid-template-columns:repeat(3,1fr)}}
+  .mm-incl{background:#fff;border:1px solid var(--mm-border);border-radius:24px;padding:24px;box-shadow:var(--mm-shadow-card);transition:transform .25s}
+  .mm-incl:hover{transform:translateY(-4px)}
+  .mm-incl .ico{width:56px;height:56px;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;font-size:28px}
+  .mm-incl .count{margin-top:14px;font-size:30px;font-weight:900;color:var(--mm-coral-deep);font-family:'Fraunces',serif}
+  .mm-incl h3{margin-top:4px;font-size:18px;font-weight:800}
+  .mm-incl p{margin-top:8px;font-size:14px;color:var(--mm-muted)}
+
+  /* Benefits (dark) */
+  .mm-benefits{background:var(--mm-ink);color:var(--mm-cream);padding:80px 16px;position:relative;overflow:hidden}
+  .mm-benefits .glow1,.mm-benefits .glow2{position:absolute;width:200px;height:200px;border-radius:50%;filter:blur(80px);opacity:.25}
+  .mm-benefits .glow1{background:var(--mm-coral);top:40px;left:30px}
+  .mm-benefits .glow2{background:var(--mm-mint);bottom:40px;right:30px}
+  .mm-benefits .mm-eyebrow{background:rgba(240,193,85,.2);color:var(--mm-mustard)}
+  .mm-benefits .mm-h2{color:var(--mm-cream)}
+  .mm-ben-grid{position:relative;margin-top:48px;display:grid;grid-template-columns:1fr;gap:14px;max-width:980px;margin-left:auto;margin-right:auto}
+  @media(min-width:640px){.mm-ben-grid{grid-template-columns:1fr 1fr}}
+  .mm-ben{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px;font-size:16px;font-weight:600}
+  .mm-ben .chk{flex:0 0 32px;width:32px;height:32px;border-radius:50%;background:var(--mm-mint);color:var(--mm-ink);display:inline-flex;align-items:center;justify-content:center;font-weight:900}
+
+  /* How it works */
+  .mm-steps{margin-top:48px;display:grid;grid-template-columns:1fr;gap:22px}
+  @media(min-width:860px){.mm-steps{grid-template-columns:repeat(3,1fr)}}
+  .mm-step{background:#fff;border:1px solid var(--mm-border);border-radius:24px;padding:28px;text-align:center;box-shadow:var(--mm-shadow-card)}
+  .mm-step .n{margin:0 auto;width:60px;height:60px;border-radius:50%;background:var(--mm-coral);color:#fff;font-family:'Fraunces',serif;font-weight:900;font-size:24px;display:flex;align-items:center;justify-content:center}
+  .mm-step .ic{margin-top:16px;font-size:24px;color:var(--mm-coral-deep)}
+  .mm-step h3{margin-top:10px;font-size:17px;font-weight:800}
+
+  /* Testimonials */
+  .mm-rev-grid{margin-top:48px;display:grid;grid-template-columns:1fr;gap:22px}
+  @media(min-width:860px){.mm-rev-grid{grid-template-columns:repeat(3,1fr)}}
+  .mm-rev{background:#fff;border:1px solid var(--mm-border);border-radius:24px;padding:24px;box-shadow:var(--mm-shadow-card)}
+  .mm-rev .stars{color:var(--mm-mustard);margin-bottom:10px;font-size:15px}
+  .mm-rev blockquote{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--mm-ink);margin:0;line-height:1.35}
+  .mm-rev figcaption{margin-top:18px;display:flex;align-items:center;gap:10px;font-weight:800;color:var(--mm-ink)}
+  .mm-rev .av{width:38px;height:38px;border-radius:50%;background:rgba(240,193,85,.3);display:flex;align-items:center;justify-content:center;font-size:18px}
+
+  /* Value stack */
+  .mm-stack-outer{margin-top:48px;border:2px solid var(--mm-ink);border-radius:32px;padding:8px;background:#fff;box-shadow:var(--mm-shadow-pop)}
+  .mm-stack-inner{background:var(--mm-cream);border-radius:24px;padding:28px}
+  .mm-stack ul li{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--mm-border);padding:12px 0}
+  .mm-stack ul li:last-child{border-bottom:0}
+  .mm-stack .lbl{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--mm-ink);font-size:15px}
+  .mm-stack .lbl::before{content:"✓";color:#3aaf85;font-weight:900;font-size:18px}
+  .mm-stack .val{font-weight:800;color:var(--mm-muted);font-size:15px}
+  .mm-total{margin-top:22px;background:var(--mm-ink);color:var(--mm-cream);border-radius:18px;padding:18px;display:flex;justify-content:space-between;align-items:center}
+  .mm-total .l{font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:14px}
+  .mm-total .v{font-size:24px;font-weight:900;text-decoration:line-through;opacity:.75}
+  .mm-today{margin-top:14px;background:var(--mm-coral);color:#fff;border-radius:18px;padding:24px;text-align:center}
+  .mm-today .l{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.15em;opacity:.9}
+  .mm-today .p{margin-top:4px;font-family:'Fraunces',serif;font-size:60px;font-weight:900;line-height:1}
+  .mm-today .s{margin-top:4px;font-size:12px;opacity:.9;font-weight:500}
+
+  /* Guarantee */
+  .mm-guar{margin:80px auto;max-width:780px;background:rgba(126,215,182,.3);border:1px solid var(--mm-mint);border-radius:32px;padding:48px 24px;text-align:center}
+  .mm-guar .shield{width:80px;height:80px;background:#fff;border:2px solid var(--mm-mint);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+  .mm-guar h2{margin-top:18px;font-size:clamp(26px,4vw,38px);font-weight:900}
+  .mm-guar p{margin-top:14px;font-size:16px;color:var(--mm-ink-soft);max-width:560px;margin-left:auto;margin-right:auto}
+
+  /* FAQ */
+  .mm-faqs{margin-top:48px;display:flex;flex-direction:column;gap:12px}
+  .mm-faq{background:#fff;border:1px solid var(--mm-border);border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .mm-faq summary{cursor:pointer;list-style:none;padding:18px;font-weight:800;color:var(--mm-ink);display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:16px}
+  .mm-faq summary::-webkit-details-marker{display:none}
+  .mm-faq summary::after{content:"▾";color:var(--mm-coral);transition:transform .2s;font-size:14px}
+  .mm-faq[open] summary::after{transform:rotate(180deg)}
+  .mm-faq .ans{padding:0 18px 18px;color:var(--mm-muted);font-size:15px}
+
+  /* Final CTA */
+  .mm-final{background:var(--mm-grad-hero);padding:96px 16px;text-align:center;position:relative;overflow:hidden}
+  .mm-final h2{font-size:clamp(34px,5.5vw,60px);font-weight:900;line-height:1.05}
+  .mm-final .price-only{display:block;margin-top:28px;font-size:12px;text-transform:uppercase;letter-spacing:.15em;color:var(--mm-coral-deep);font-weight:800}
+  .mm-final .price-big{display:block;font-family:'Fraunces',serif;font-size:clamp(56px,8vw,82px);font-weight:900;color:var(--mm-ink);line-height:1}
+  .mm-final .expires{margin-top:22px;display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--mm-muted)}
+
+  /* Footer */
+  .mm-footer{border-top:1px solid var(--mm-border);background:#fff;padding:28px 16px}
+  .mm-footer .row{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:space-between;font-size:14px;color:var(--mm-muted)}
+  @media(min-width:640px){.mm-footer .row{flex-direction:row}}
+  .mm-footer .brand{font-weight:800;color:var(--mm-ink)}
+  .mm-footer .brand span{color:var(--mm-coral)}
+</style>
+
+<div class="mm-root">
+
+  <!-- Announcement -->
+  <div class="mm-anno">
+    ⚡ Flash Offer: 96% OFF Today — ₹4,999 <span class="strike">→</span> <b>₹199</b>
+  </div>
+
+  <!-- Hero -->
+  <section class="mm-hero">
+    <div class="mm-hero-grid">
+      <div>
+        <span class="mm-pill">✨ For Kids Age 2–8</span>
+        <h1 class="mm-h1">
+          6000+ Fun &amp; Educational <span class="hl">Kids Worksheets</span>
+        </h1>
+        <p class="mm-lede">Keep Kids Learning Without Mobile Addiction 📚✨</p>
+        <p class="mm-sub">Printable A4 activity sheets designed for kids age 2–8 years. Fun learning activities kids actually enjoy!</p>
+
+        <ul class="mm-checks">
+          <li><span class="dot"></span>Instant Download</li>
+          <li><span class="dot"></span>Print Anytime</li>
+          <li><span class="dot"></span>Reusable Learning</li>
+          <li><span class="dot"></span>Parent Approved</li>
+          <li><span class="dot"></span>Screen-Free</li>
+          <li><span class="dot"></span>Home Learning</li>
+        </ul>
+
+        <div class="mm-pricebox">
+          <div>
+            <div class="lbl">Worth</div>
+            <div class="old">₹4,999</div>
+          </div>
+          <div class="sep"></div>
+          <div>
+            <div class="lbl nowlbl">Today Only</div>
+            <div class="now">₹199</div>
+          </div>
+        </div>
+
+        <div class="mm-cta-wrap">
+          <a href="#order" class="mm-btn">⬇ Download Now &amp; Keep Kids Learning <span class="arr">→</span></a>
+          <span class="mm-cta-sub">100% Instant Digital Access</span>
+        </div>
+      </div>
+
+      <div class="mm-hero-img">
+        <div class="bg1"></div>
+        <div class="bg2"></div>
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80" alt="Colorful printable kids worksheets">
+        <div class="mm-badge-off">96% OFF</div>
+        <div class="mm-badge-loved">
+          <div class="mm-avatars"><span>🧒</span><span>👧</span><span>👦</span></div>
+          <div>
+            <div class="mm-stars">★★★★★</div>
+            <div class="mm-loved-txt">Loved by 12,000+ parents</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust bar -->
+  <section class="mm-trust">
+    <div class="mm-trust-grid">
+      <div><div class="ic">⭐⭐⭐⭐⭐</div><div class="lbl">Trusted by Parents</div></div>
+      <div><div class="ic">👩</div><div class="lbl">Designed by Moms</div></div>
+      <div><div class="ic">📚</div><div class="lbl">Loved by Kids</div></div>
+      <div><div class="ic">🖨</div><div class="lbl">Easy to Print at Home</div></div>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="mm-section">
+    <div class="mm-wrap-sm">
+      <div class="mm-center">
+        <span class="mm-eyebrow">The Real Problem</span>
+        <h2 class="mm-h2">Is Your Child Spending Too Much <span class="coral">Time on Mobile?</span></h2>
+        <p class="mm-section-intro">Most parents struggle with:</p>
+      </div>
+      <ul class="mm-pain-grid">
+        <li class="mm-pain"><span class="x">✕</span>Endless Screen Time</li>
+        <li class="mm-pain"><span class="x">✕</span>Bored Kids at Home</li>
+        <li class="mm-pain"><span class="x">✕</span>Lack of Productive Activities</li>
+        <li class="mm-pain"><span class="x">✕</span>Difficulty Keeping Kids Engaged</li>
+        <li class="mm-pain"><span class="x">✕</span>Expensive Learning Materials</li>
+        <li class="mm-pain"><span class="x">✕</span>Daily Learning Stress</li>
+      </ul>
+      <div class="mm-pain-banner">
+        That's why we created <b>MiniMinds Printables</b> — a simple, affordable, and fun learning solution that keeps kids engaged while helping them learn through activities they <em>actually enjoy</em>.
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution -->
+  <section class="mm-section mm-sec-alt">
+    <div class="mm-wrap-sm">
+      <div class="mm-center">
+        <span class="mm-eyebrow">The Solution</span>
+        <h2 class="mm-h2">The Ultimate Printable Learning Bundle for Kids 🎨📘</h2>
+        <p class="mm-section-intro">6000+ printable worksheets designed to improve:</p>
+      </div>
+      <div class="mm-skills">
+        <span class="mm-skill">✅ Creativity</span>
+        <span class="mm-skill">✅ Focus</span>
+        <span class="mm-skill">✅ Writing Skills</span>
+        <span class="mm-skill">✅ Number Recognition</span>
+        <span class="mm-skill">✅ Problem Solving</span>
+        <span class="mm-skill">✅ Hand-Eye Coordination</span>
+        <span class="mm-skill">✅ Early Learning Skills</span>
+      </div>
+      <div class="mm-perfect-lbl">Perfect For</div>
+      <div class="mm-perfect-grid">
+        <div class="mm-perfect"><div class="ic">👩</div><div class="lbl">Parents</div></div>
+        <div class="mm-perfect"><div class="ic">🏠</div><div class="lbl">Homeschooling</div></div>
+        <div class="mm-perfect"><div class="ic">👩‍🏫</div><div class="lbl">Teachers</div></div>
+        <div class="mm-perfect"><div class="ic">🎁</div><div class="lbl">Gifts for Kids</div></div>
+        <div class="mm-perfect"><div class="ic">📚</div><div class="lbl">Preschool</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Included -->
+  <section class="mm-section">
+    <div class="mm-wrap">
+      <div class="mm-center">
+        <span class="mm-eyebrow">What's Inside</span>
+        <h2 class="mm-h2">Inside This Mega Bundle</h2>
+      </div>
+      <div class="mm-incl-grid">
+        <div class="mm-incl"><div class="ico" style="background:rgba(128,193,228,.3)">📘</div><div class="count">1300+</div><h3>English Alphabet Worksheets</h3><p>Letter tracing, phonics, writing practice &amp; recognition.</p></div>
+        <div class="mm-incl"><div class="ico" style="background:rgba(244,113,90,.2)">🔢</div><div class="count">300+</div><h3>Number &amp; Counting Worksheets</h3><p>Fun counting, matching &amp; number learning sheets.</p></div>
+        <div class="mm-incl"><div class="ico" style="background:rgba(240,193,85,.4)">🎨</div><div class="count">500+</div><h3>Coloring &amp; Drawing Worksheets</h3><p>Creative pages kids love.</p></div>
+        <div class="mm-incl"><div class="ico" style="background:rgba(126,215,182,.3)">✂️</div><div class="count">1000+</div><h3>Cut &amp; Glue Activities</h3><p>Hands-on activities for brain development.</p></div>
+        <div class="mm-incl"><div class="ico" style="background:rgba(128,193,228,.3)">🧩</div><div class="count">300+</div><h3>Word Search &amp; Puzzle Worksheets</h3><p>Fun brain games and learning activities.</p></div>
+        <div class="mm-incl"><div class="ico" style="background:rgba(240,193,85,.4)">📗</div><div class="count">2000+</div><h3>Fun Activity Worksheets</h3><p>Interactive learning sheets for everyday learning.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits (dark) -->
+  <section class="mm-benefits">
+    <div class="glow1"></div><div class="glow2"></div>
+    <div class="mm-wrap-sm mm-center" style="position:relative">
+      <span class="mm-eyebrow">Why Parents Love It</span>
+      <h2 class="mm-h2">Why Parents Love This Bundle ❤️</h2>
+    </div>
+    <ul class="mm-ben-grid">
+      <li class="mm-ben"><span class="chk">✓</span>Keeps Kids Busy Productively</li>
+      <li class="mm-ben"><span class="chk">✓</span>Reduces Mobile Addiction Naturally</li>
+      <li class="mm-ben"><span class="chk">✓</span>Encourages Creative Learning</li>
+      <li class="mm-ben"><span class="chk">✓</span>Saves Time for Busy Parents</li>
+      <li class="mm-ben"><span class="chk">✓</span>Printable Anytime</li>
+      <li class="mm-ben"><span class="chk">✓</span>Reusable Forever</li>
+      <li class="mm-ben"><span class="chk">✓</span>Affordable One-Time Purchase</li>
+    </ul>
+  </section>
+
+  <!-- How it works -->
+  <section class="mm-section">
+    <div class="mm-wrap-sm">
+      <div class="mm-center">
+        <span class="mm-eyebrow">How It Works</span>
+        <h2 class="mm-h2">Get Started in 3 Simple Steps</h2>
+      </div>
+      <div class="mm-steps">
+        <div class="mm-step"><div class="n">1</div><div class="ic">⬇</div><h3>Click the Download Button</h3></div>
+        <div class="mm-step"><div class="n">2</div><div class="ic">🛡</div><h3>Complete Secure Checkout</h3></div>
+        <div class="mm-step"><div class="n">3</div><div class="ic">🖨</div><h3>Instantly Download &amp; Print Worksheets</h3></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="mm-section mm-sec-alt">
+    <div class="mm-wrap">
+      <div class="mm-center">
+        <span class="mm-eyebrow">Real Parents, Real Results</span>
+        <h2 class="mm-h2">What Parents Are Saying <span class="mustard">⭐⭐⭐⭐⭐</span></h2>
+      </div>
+      <div class="mm-rev-grid">
+        <figure class="mm-rev"><div class="stars">★★★★★</div><blockquote>"My son stopped asking for mobile after these worksheets."</blockquote><figcaption><span class="av">👩</span>— Priya S.</figcaption></figure>
+        <figure class="mm-rev"><div class="stars">★★★★★</div><blockquote>"Amazing value for the price. Kids stay busy for hours!"</blockquote><figcaption><span class="av">👩🏻</span>— Neha K.</figcaption></figure>
+        <figure class="mm-rev"><div class="stars">★★★★★</div><blockquote>"Perfect for preschool learning at home."</blockquote><figcaption><span class="av">👩🏽</span>— Sana A.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value stack -->
+  <section id="order" class="mm-section">
+    <div class="mm-wrap-sm">
+      <div class="mm-center">
+        <span class="mm-eyebrow">Today's Deal</span>
+        <h2 class="mm-h2">Everything You Get Today</h2>
+      </div>
+      <div class="mm-stack-outer">
+        <div class="mm-stack-inner mm-stack">
+          <ul>
+            <li><span class="lbl">6000+ Printable Worksheets</span><span class="val">₹4,999 Value</span></li>
+            <li><span class="lbl">Instant Lifetime Access</span><span class="val">₹999 Value</span></li>
+            <li><span class="lbl">Reusable Learning Activities</span><span class="val">₹799 Value</span></li>
+            <li><span class="lbl">Parent Activity Planner</span><span class="val">₹499 Value</span></li>
+          </ul>
+          <div class="mm-total"><span class="l">Total Value</span><span class="v">₹7,296</span></div>
+          <div class="mm-today">
+            <div class="l">Today Only</div>
+            <div class="p">₹199</div>
+            <div class="s">One-time payment · Lifetime access</div>
+          </div>
+        </div>
+      </div>
+      <div class="mm-cta-wrap center" style="margin-top:36px">
+        <a href="#order" class="mm-btn">⬇ Download Now <span class="arr">→</span></a>
+        <span class="mm-cta-sub">100% Instant Digital Access</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <div class="mm-guar">
+    <div class="shield">🛡</div>
+    <h2>100% Satisfaction Promise</h2>
+    <p>If you don't absolutely love the quality of these printable activities, simply contact support. We're committed to helping parents make learning fun and engaging.</p>
+  </div>
+
+  <!-- FAQ -->
+  <section class="mm-section mm-sec-alt">
+    <div class="mm-wrap-sm">
+      <div class="mm-center">
+        <span class="mm-eyebrow">Questions?</span>
+        <h2 class="mm-h2">Frequently Asked Questions</h2>
+      </div>
+      <div class="mm-faqs">
+        <details class="mm-faq" open><summary>Are these printable?</summary><div class="ans">Yes! All worksheets are designed in A4 printable format.</div></details>
+        <details class="mm-faq"><summary>What age group is this for?</summary><div class="ans">Perfect for kids aged 2–8 years.</div></details>
+        <details class="mm-faq"><summary>Will I get instant access?</summary><div class="ans">Yes, immediately after purchase.</div></details>
+        <details class="mm-faq"><summary>Can I print multiple times?</summary><div class="ans">Absolutely! Print unlimited times.</div></details>
+        <details class="mm-faq"><summary>Is this suitable for homeschooling?</summary><div class="ans">Yes, perfect for homeschooling and preschool learning.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="mm-final">
+    <div class="mm-wrap-sm">
+      <h2>Give Your Kids Fun Learning <span style="color:var(--mm-coral)">Without Screen Addiction</span> 🎨📚</h2>
+      <p class="mm-section-intro" style="color:var(--mm-ink-soft);font-weight:600">Get Instant Access to 6000+ Printable Worksheets Today</p>
+      <span class="price-only">Only</span>
+      <span class="price-big">₹199</span>
+      <div class="mm-cta-wrap center" style="margin-top:28px">
+        <a href="#order" class="mm-btn">⬇ Download Now <span class="arr">→</span></a>
+        <span class="mm-cta-sub">100% Instant Digital Access</span>
+      </div>
+      <div class="expires">⏱ Offer expires soon · Price returns to ₹4,999</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mm-footer">
+    <div class="row">
+      <div class="brand">MiniMinds <span>Printables</span></div>
+      <div>© 2026 MiniMinds. Made with ❤️ for parents.</div>
+    </div>
+  </footer>
+
+</div>
